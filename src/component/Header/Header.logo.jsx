@@ -1,6 +1,6 @@
 import React from "react";
 import { FaReact } from "react-icons/fa6";
-import opayLogo from "../assets/opay.png";
+import opayLogo from "../../assets/opay.png";
 
 function Headerlogo() {
   const logoName = "Opay";
