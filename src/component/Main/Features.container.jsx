@@ -8,7 +8,7 @@ import { HiMiniChevronUpDown } from "react-icons/hi2";
 function Featurescontainer() {
   const container = {
     padding: "10px",
-    boxShadow: "2px, 20px red",
+    boxShadow: "2px 20px red",
   };
   return (
     <div style={container} className="containerFeature">

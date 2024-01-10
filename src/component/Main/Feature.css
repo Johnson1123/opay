@@ -1,7 +1,7 @@
 .containerFeature {
   box-shadow: 0 0 5px #e4e4e4;
   width: 80%;
-  margin: 10px auto;
+  margin: "10px auto";
   border-radius: 10px;
   display: flex;
   justify-content: space-between;
