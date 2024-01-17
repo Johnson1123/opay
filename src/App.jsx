@@ -4,6 +4,7 @@ import "./App.css";
 
 import Home from "./pages/home/Home";
 import Login from "./component/Page/Login";
+import Book from "./pages/book/Book";
 
 export function App() {
   return (
@@ -11,6 +12,16 @@ export function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route
+          path="/register"
+          element={
+            <>
+              <p>Register</p>
+            </>
+          }
+        />
+        <Route path="/product" element={<></>} />
+        <Route path="/book/:id" element={<Book />} />
       </Routes>
     </BrowserRouter>
   );

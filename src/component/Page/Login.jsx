@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FiEye } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
+import { login } from "../../data/script";
 
 export default function Login() {
   const [login, setLogin] = useState(true);
   const [hide, setHide] = useState(true);
+  const navigate = useNavigate();
 
   const [data, setData] = useState({
     email: "",
     password: "",
   });
 
+  login();
   const handle = () => {
     if (login) {
       setLogin(false);
@@ -26,7 +30,7 @@ export default function Login() {
     } else if (data.email == "" || data.password == "") {
       console.log("Invalid credential");
     } else {
-      console.log("u have loggin");
+      navigate("/", { replace: true });
     }
   };
   const handleChange = (e) => {
@@ -35,7 +39,6 @@ export default function Login() {
       ...data,
       [e.target.name]: formdata,
     }));
-    console.log(data);
   };
   return (
     <div>
