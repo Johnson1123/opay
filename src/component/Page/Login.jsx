@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { FiEye } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../data/script";
+import axios from "axios";
 
 export default function Login() {
   const [login, setLogin] = useState(true);
@@ -13,8 +13,6 @@ export default function Login() {
     email: "",
     password: "",
   });
-
-  login();
   const handle = () => {
     if (login) {
       setLogin(false);
@@ -42,8 +40,7 @@ export default function Login() {
   };
   return (
     <div>
-      {" "}
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit} encType="multipart/form-data">
         <input type="text" name="email" onChange={handleChange} />
         <div className="">
           <input
@@ -59,6 +56,7 @@ export default function Login() {
             )}
           </span>
         </div>
+        <input type="file" />
         <button type="submit">Submit</button>
       </form>
     </div>

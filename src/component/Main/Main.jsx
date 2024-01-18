@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import data from "../../data/script";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+// import data from "../../data/script";
 import { Link } from "react-router-dom";
 
 // import Button from "./Button";
@@ -7,12 +8,23 @@ import { Link } from "react-router-dom";
 
 const Main = () => {
   let [count, setCount] = useState(1);
+  const [products, setProducts] = useState([]);
+
+  const dataProduct = async () => {
+    const response = await axios.get("https://dummyjson.com/products");
+    setProducts(response.data.products);
+  };
 
   // const handleCount = () => {
   //   setCount(() => count + 1);
   //   console.log(count);
   // };
 
+  useEffect(() => {
+    dataProduct();
+  }, []);
+
+  console.log(products);
   return (
     // <div>
     //   Categories
@@ -35,8 +47,8 @@ const Main = () => {
         width: "100%",
       }}
     >
-      {data &&
-        data.slice(0, 20).map((item, i) => {
+      {products.length > 0 &&
+        products.slice(0, 20).map((item, i) => {
           return (
             <div
               className=""
@@ -50,7 +62,7 @@ const Main = () => {
               }}
             >
               <img
-                src={item.Image}
+                src={item.images[0]}
                 width={"250px"}
                 height={"150px"}
                 style={{ objectFit: "cover" }}
@@ -60,10 +72,10 @@ const Main = () => {
                   className=""
                   style={{ textAlign: "center", padding: "10px" }}
                 >
-                  {item.Description.slice(0, 20)}
+                  {item.description.slice(0, 20)}
                 </p>
                 <Link
-                  to={`/book/${item.Title.replaceAll(" ", "-")}`}
+                  to={`/book/${item.title.replaceAll(" ", "-")}`}
                   style={{
                     padding: "10px 15px",
                     border: "none",
@@ -75,6 +87,7 @@ const Main = () => {
                 >
                   View Book
                 </Link>
+                <button onClick={() => setCount(2 + 1)}>Update</button>
               </div>
             </div>
           );
